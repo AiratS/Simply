@@ -1,0 +1,27 @@
+@import "colors";
+
+.sy-input {
+  color: $sy-input-content-grey;
+  font-size: 14px;
+  border: 1px solid $sy-border-grey;
+  border-radius: 2px;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.sy-btn {
+  color: white;
+  background-color: $sy-red;
+  font-size: 16px;
+  font-weight: 500;
+  border: 0;
+  border-radius: 2px;
+
+  &:hover, &:active, &:focus {
+    color: white;
+    background-color: $sy-red;
+  }
+}
