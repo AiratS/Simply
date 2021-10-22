@@ -1,0 +1,11 @@
+@import "simply";
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url(../fonts/SourceSansPro.woff2) format('woff2');
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  margin: 0!important;
+}
