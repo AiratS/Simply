@@ -2,7 +2,10 @@
 
 $finder = (new PhpCsFixer\Finder())
     ->in(__DIR__)
-    ->exclude('var')
+    ->exclude([
+        'var',
+        'node_modules',
+    ])
 ;
 
 return (new PhpCsFixer\Config())
