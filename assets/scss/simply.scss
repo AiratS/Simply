@@ -24,4 +24,10 @@
     color: white;
     background-color: $sy-red;
   }
+
+  &:disabled {
+    background-color: $sy-red-disabled;
+    border-color: $sy-red-disabled;
+    cursor: not-allowed;
+  }
 }
