@@ -6,7 +6,6 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\ApiPlatform\Dto\SignUpInputDto;
-use App\ApiPlatform\Dto\SignUpOutputDto;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -18,9 +17,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ApiResource(
  *     collectionOperations={
  *         "sign_up"={
+ *             "path"="/sign-up",
  *             "method"="POST",
  *             "input"=SignUpInputDto::class,
- *             "output"=SignUpOutputDto::class,
  *             "denormalization_context"={
  *                 "groups"={"sign_up"}
  *             }
