@@ -37,8 +37,12 @@ class SignUpResponseSubscriber implements EventSubscriberInterface
      */
     public function addAuthenticationSuccessResponse(ResponseEvent $event): void
     {
-        $originalResponse = $event->getResponse();
+        $route = $event->getRequest()->get('_route');
+        if ('api_users_sign_up_collection' !== $route) {
+            return;
+        }
 
+        $originalResponse = $event->getResponse();
         if ($originalResponse->isSuccessful()) {
             $user = $this->getUser($originalResponse->getContent());
             $response = $this->authenticationSuccess->handleAuthenticationSuccess($user);
