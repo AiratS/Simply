@@ -1,5 +1,6 @@
 const Home = () => import('../pages/Home');
 const Login = () => import('../pages/Login');
+const Profile = () => import('../pages/Profile');
 
 const routes = [
   {
@@ -11,7 +12,12 @@ const routes = [
     path: '/login',
     name: 'login',
     component: Login,
-  }
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: Profile,
+  },
 ];
 
 export default routes;

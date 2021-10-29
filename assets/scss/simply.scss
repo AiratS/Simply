@@ -7,27 +7,37 @@
   border-radius: 2px;
 
   &:focus {
-    outline: none;
-    box-shadow: none;
+    outline: none !important;
+    box-shadow: none !important;
   }
 }
 
 .sy-btn {
   color: white;
-  background-color: $sy-red;
+  background-color: $sy-red !important;
   font-size: 16px;
   font-weight: 500;
   border: 0;
   border-radius: 2px;
 
   &:hover, &:active, &:focus {
-    color: white;
-    background-color: $sy-red;
+    color: white !important;
+    background-color: $sy-red !important;
   }
 
   &:disabled {
-    background-color: $sy-red-disabled;
-    border-color: $sy-red-disabled;
-    cursor: not-allowed;
+    background-color: $sy-red-disabled !important;
+    border-color: $sy-red-disabled !important;
+    cursor: not-allowed !important;
+  }
+}
+
+.sy-link {
+  color: white;
+  text-decoration: none;
+
+  &:hover {
+    color: white;
+    text-decoration: none;
   }
 }
