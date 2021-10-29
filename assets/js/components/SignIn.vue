@@ -44,28 +44,28 @@ export default {
     BFormGroup,
     BFormInput,
     BFormInvalidFeedback,
-    BButton
+    BButton,
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  @import '../../../scss/colors';
+@import '../../scss/colors';
 
-  .sign-in {
-    .title {
-      width: fit-content;
-      color: #000000;
-      font-size: 18px;
-      font-weight: 600;
-      border-bottom: 2px solid $sy-login-red;
-      margin-bottom: 30px;
-    }
-
-    .btn-sign-in {
-      width: 100px;
-      height: 40px;
-      margin-top: 18px;
-    }
+.sign-in {
+  .title {
+    width: fit-content;
+    color: #000000;
+    font-size: 18px;
+    font-weight: 600;
+    border-bottom: 2px solid $sy-login-red;
+    margin-bottom: 30px;
   }
+
+  .btn-sign-in {
+    width: 100px;
+    height: 40px;
+    margin-top: 18px;
+  }
+}
 </style>

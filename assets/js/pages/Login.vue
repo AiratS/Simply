@@ -36,8 +36,8 @@
 
 <script>
 import { BTabs, BTab } from 'bootstrap-vue';
-import SignIn from "../components/login/SignIn";
-import SignUp from "../components/login/SignUp";
+import SignIn from "../components/SignIn";
+import SignUp from "../components/SignUp";
 
 export default {
   name: "Login",
@@ -45,130 +45,130 @@ export default {
     BTabs,
     BTab,
     SignIn,
-    SignUp
+    SignUp,
   }
 }
 </script>
 
 <style lang="scss">
-  @import '../../scss/colors';
+@import '../../scss/colors';
 
-  body {
-    background-color: $sy-login-red;
-    padding-top: 100px;
-    padding-bottom: 100px;
+body {
+  background-color: $sy-login-red;
+  padding-top: 100px;
+  padding-bottom: 100px;
 
-    .login {
-      width: 940px;
+  .login {
+    width: 940px;
+    height: 615px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border-radius: 3px;
+
+    .left {
+      position: relative;
       height: 615px;
-      margin-left: auto;
-      margin-right: auto;
+      padding-top: 70px;
+      padding-left: 20px;
+      border-right: 1px solid $sy-login-grey;
+    }
+
+    .left:before {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      content: "";
       background-color: white;
-      border-radius: 3px;
+      border-radius: 15px;
+      top: -14px;
+      left: 44px;
+    }
 
-      .left {
-        position: relative;
-        height: 615px;
-        padding-top: 70px;
-        padding-left: 20px;
-        border-right: 1px solid $sy-login-grey;
-      }
+    .left:after {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      content: "";
+      background-color: white;
+      border-radius: 10px;
+      top: -37px;
+      left: 28px;
+    }
 
-      .left:before {
-        position: absolute;
-        width: 30px;
-        height: 30px;
-        content: "";
-        background-color: white;
-        border-radius: 15px;
-        top: -14px;
-        left: 44px;
-      }
+    .right {
+      border-left: 1px solid $sy-login-grey;
+      padding-top: 30px;
+      padding-left: 75px;
+      padding-right: 75px;
+    }
 
-      .left:after {
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        content: "";
-        background-color: white;
-        border-radius: 10px;
-        top: -37px;
-        left: 28px;
-      }
+    .right:before {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      content: "";
+      background-color: white;
+      border-radius: 15px;
+      bottom: -14px;
+      right: 108px;
+    }
 
-      .right {
-        border-left: 1px solid $sy-login-grey;
-        padding-top: 30px;
-        padding-left: 75px;
-        padding-right: 75px;
-      }
-
-      .right:before {
-        position: absolute;
-        width: 30px;
-        height: 30px;
-        content: "";
-        background-color: white;
-        border-radius: 15px;
-        bottom: -14px;
-        right: 108px;
-      }
-
-      .right:after {
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        content: "";
-        background-color: white;
-        border-radius: 10px;
-        bottom: -37px;
-        right: 94px;
-      }
+    .right:after {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      content: "";
+      background-color: white;
+      border-radius: 10px;
+      bottom: -37px;
+      right: 94px;
     }
   }
+}
 
-  .info {
-    padding-left: 45px;
-    margin-bottom: 120px;
+.info {
+  padding-left: 45px;
+  margin-bottom: 120px;
 
-    .logo {
-      font-size: 30px;
-      font-weight: bold;
-      margin-bottom: 25px;
-    }
+  .logo {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 25px;
+  }
+}
+
+.toggle-list {
+  float: right;
+  clear: both;
+  margin-bottom: 70px;
+
+  .toggle {
+    padding: 3px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: black;
+    background-color: $sy-border-grey;
+    border-radius: 4px;
   }
 
-  .toggle-list {
-    float: right;
-    clear: both;
-    margin-bottom: 70px;
-
-    .toggle {
-      padding: 3px 12px;
-      font-size: 14px;
-      font-weight: 500;
-      color: black;
-      background-color: $sy-border-grey;
-      border-radius: 4px;
-    }
-
-    .toggle-sign-in {
-      border-top-right-radius: 0 !important;
-      border-bottom-right-radius: 0 !important;;
-    }
-
-    .toggle-sign-up {
-      border-top-left-radius: 0 !important;;
-      border-bottom-left-radius: 0 !important;;
-    }
-
-    .toggle-active {
-      background-color: $sy-red !important;
-    }
+  .toggle-sign-in {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;;
   }
 
-  .toggle-content {
-    clear: both;
-    padding-right: 35px;
+  .toggle-sign-up {
+    border-top-left-radius: 0 !important;;
+    border-bottom-left-radius: 0 !important;;
   }
+
+  .toggle-active {
+    background-color: $sy-red !important;
+  }
+}
+
+.toggle-content {
+  clear: both;
+  padding-right: 35px;
+}
 </style>

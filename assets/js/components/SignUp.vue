@@ -86,8 +86,8 @@ import {
   BButton
 } from 'bootstrap-vue';
 import { required, email, minLength, sameAs } from 'vuelidate/lib/validators'
-import api from '../../api';
-import helpers from '../../helpers';
+import api from '../api';
+import helpers from '../helpers';
 
 export default {
   name: "SignUp",
@@ -98,7 +98,7 @@ export default {
     BFormInput,
     BFormCheckbox,
     BFormInvalidFeedback,
-    BButton
+    BButton,
   },
 
   data() {
@@ -148,26 +148,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '../../../scss/colors';
+@import '../../scss/colors';
 
-  .sign-up {
-    .title {
-      width: fit-content;
-      color: #000000;
-      font-size: 18px;
-      font-weight: 600;
-      border-bottom: 2px solid $sy-login-red;
-      margin-bottom: 30px;
-    }
-
-    .btn-sign-up {
-      width: 125px;
-      height: 40px;
-      margin-top: 18px;
-    }
-
-    .agree-checkbox {
-      margin-top: 25px;
-    }
+.sign-up {
+  .title {
+    width: fit-content;
+    color: #000000;
+    font-size: 18px;
+    font-weight: 600;
+    border-bottom: 2px solid $sy-login-red;
+    margin-bottom: 30px;
   }
+
+  .btn-sign-up {
+    width: 125px;
+    height: 40px;
+    margin-top: 18px;
+  }
+
+  .agree-checkbox {
+    margin-top: 25px;
+  }
+}
 </style>
