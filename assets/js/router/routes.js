@@ -1,6 +1,7 @@
 const Home = () => import('../pages/Home');
 const Login = () => import('../pages/Login');
 const Profile = () => import('../pages/Profile');
+const Search = () => import('../pages/Search');
 
 const routes = [
   {
@@ -17,6 +18,11 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: Profile,
+  },
+  {
+    path: '/search',
+    name: 'search',
+    component: Search,
   },
 ];
 

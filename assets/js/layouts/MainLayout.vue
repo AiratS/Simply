@@ -165,6 +165,10 @@ $page-width: 1110px;
   }
 }
 
+.content {
+  background-color: $sy-profile-background;
+}
+
 .footer {
   width: 100%;
   padding-top: 30px;
