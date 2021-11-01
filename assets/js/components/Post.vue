@@ -41,12 +41,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$post-border-grey: #e4e4e4;
+@import '../../scss/colors';
 
 .post {
   width: 100%;
-  box-shadow: 0 2px $post-border-grey;
-  border: 1px solid $post-border-grey;
+  box-shadow: 0 2px $sy-block-border-grey;
+  border: 1px solid $sy-block-border-grey;
   background-color: white;
   padding: 20px;
 
