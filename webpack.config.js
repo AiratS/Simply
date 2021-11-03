@@ -1,4 +1,5 @@
 const Encore = require('@symfony/webpack-encore');
+const path = require('path');
 
 if (!Encore.isRuntimeEnvironmentConfigured()) {
     Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
@@ -25,4 +26,11 @@ Encore
     .enableVueLoader()
 ;
 
-module.exports = Encore.getWebpackConfig();
+let config = Encore.getWebpackConfig();
+
+config.resolve.alias['@'] = path.resolve(__dirname, 'assets/js');
+config.resolve.alias['@scss'] = path.resolve(__dirname, 'assets/scss');
+config.resolve.alias['@img'] = path.resolve(__dirname, 'assets/img');
+config.resolve.alias['@fonts'] = path.resolve(__dirname, 'assets/fonts');
+
+module.exports = config;
