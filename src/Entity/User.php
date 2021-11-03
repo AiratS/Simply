@@ -8,6 +8,8 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\ApiPlatform\Dto\ProfileOutputDto;
 use App\ApiPlatform\Dto\SignUpInputDto;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -99,6 +101,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="datetime_immutable")
      */
     private \DateTimeImmutable $createdAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity=UserPhoto::class, mappedBy="userEntity", orphanRemoval=true)
+     */
+    private Collection $photos;
+
+    public function __construct()
+    {
+        $this->photos = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -260,6 +272,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCreatedAt(\DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|UserPhoto[]
+     */
+    public function getPhotos(): Collection
+    {
+        return $this->photos;
+    }
+
+    public function addPhoto(UserPhoto $photo): self
+    {
+        if (!$this->photos->contains($photo)) {
+            $this->photos[] = $photo;
+            $photo->setUserEntity($this);
+        }
+
+        return $this;
+    }
+
+    public function removePhoto(UserPhoto $photo): self
+    {
+        if ($this->photos->removeElement($photo)) {
+            // set the owning side to null (unless already changed)
+            if ($photo->getUserEntity() === $this) {
+                $photo->setUserEntity(null);
+            }
+        }
 
         return $this;
     }

@@ -64,17 +64,11 @@ class ProfileOutputDto
         return $this;
     }
 
-    /**
-     * @return int
-     */
     public function getFriendsCount(): int
     {
         return $this->friendsCount;
     }
 
-    /**
-     * @param int $friendsCount
-     */
     public function setFriendsCount(int $friendsCount): void
     {
         $this->friendsCount = $friendsCount;
