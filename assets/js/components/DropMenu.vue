@@ -32,23 +32,8 @@
 </template>
 
 <script>
-import {
-  BDropdown,
-  BDropdownHeader,
-  BDropdownText,
-  BDropdownItemButton,
-  BDropdownDivider,
-} from 'bootstrap-vue';
-
 export default {
-  name: "DropdownUserMenu",
-  components: {
-    BDropdown,
-    BDropdownHeader,
-    BDropdownText,
-    BDropdownItemButton,
-    BDropdownDivider,
-  },
+  name: "DropMenu",
   props: {
     profile: {
       type: Object,
@@ -67,8 +52,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '../../scss/variables';
-  @import '../../scss/colors';
+  @import '@scss/variables';
+  @import '@scss/colors';
 
   $dropdown-btn-border-color: #dd3e2b;
 

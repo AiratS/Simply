@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: "ChatSenderMessage",
+  name: "ChatCompanionMessage",
   props: {
     message: {
       type: Object,
@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/colors';
+@import '@scss/colors';
 
 .chat-sender-message {
   display: flex;

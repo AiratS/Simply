@@ -14,16 +14,16 @@
     <div class="chat-view-messages">
       <infinite-loading direction="top" @infinite="loadMessages"></infinite-loading>
       <div v-for="(message, index) in messages" :key="index" class="chat-view-message">
-        <chat-sender-message
+        <chat-companion-message
             v-if="message.type === 'sender'"
             :message="message"
             class="chat-sender-message"
-        ></chat-sender-message>
-        <chat-recipient-message
+        ></chat-companion-message>
+        <chat-own-message
             v-else
             :message="message"
             class="chat-recipient-message"
-        ></chat-recipient-message>
+        ></chat-own-message>
       </div>
     </div>
     <div class="chat-view-controls">
@@ -37,15 +37,15 @@
 
 <script>
 import InfiniteLoading from 'vue-infinite-loading';
-import ChatRecipientMessage from '../components/ChatRecipientMessage';
-import ChatSenderMessage from '../components/ChatSenderMessage';
+import ChatOwnMessage from '@/components/ChatOwnMessage';
+import ChatCompanionMessage from '@/components/ChatCompanionMessage';
 
 export default {
   name: "ChatView",
   components: {
     InfiniteLoading,
-    ChatRecipientMessage,
-    ChatSenderMessage,
+    ChatOwnMessage,
+    ChatCompanionMessage,
   },
   props: {
     companion: {

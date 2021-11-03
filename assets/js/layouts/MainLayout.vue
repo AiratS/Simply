@@ -8,11 +8,11 @@
         </div>
         <div class="header-menu">
           <top-menu class="top-menu" :items="items"></top-menu>
-          <dropdown-user-menu
+          <drop-menu
               :profile="profile"
               :setting-items="settingItems"
               :logout-link="logoutLink"
-          ></dropdown-user-menu>
+          ></drop-menu>
         </div>
       </div>
     </div>
@@ -40,21 +40,19 @@
 </template>
 
 <script>
-import SimplyLogo from "../components/SimplyLogo";
-import SearchField from "../components/SearchField";
-import TopMenu from "../components/TopMenu";
-import DropdownUserMenu from "../components/DropdownUserMenu";
+import SimplyLogo from "@/components/SimplyLogo";
+import SearchField from "@/components/SearchField";
+import TopMenu from "@/components/TopMenu";
+import DropMenu from "@/components/DropMenu";
 
 export default {
   name: "MainLayout",
-
   components: {
     SimplyLogo,
     SearchField,
     TopMenu,
-    DropdownUserMenu,
+    DropMenu,
   },
-
   data() {
     return {
       items: [
@@ -128,7 +126,6 @@ export default {
       ]
     };
   },
-
   computed: {
     currentYear() {
       return new Date().getFullYear();
@@ -138,7 +135,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/colors';
+@import '@scss/colors';
 
 $page-width: 1110px;
 
