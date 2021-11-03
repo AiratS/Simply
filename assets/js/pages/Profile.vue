@@ -5,9 +5,11 @@
         <img src="../../img/profile-background.jpg" alt="profile-background" />
         <div class="profile-bg-change-container">
           <div class="profile-bg-change">
-            <b-button class="bg-change-btn sy-btn">
-              Change image
-            </b-button>
+            <file-input @upload="onBackgroundUpload">
+              <b-button class="bg-change-btn sy-btn">
+                Change image
+              </b-button>
+            </file-input>
           </div>
         </div>
       </div>
@@ -41,10 +43,12 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import MainLayout from "@/layouts/MainLayout";
-import ProfileAvatar from "@/components/ProfileAvatar";
-import Post from "@/components/Post";
-import PostList from "@/components/PostList";
+import MainLayout from '@/layouts/MainLayout';
+import ProfileAvatar from '@/components/ProfileAvatar';
+import Post from '@/components/Post';
+import PostList from '@/components/PostList';
+import FileInput from '@/components/FileInput';
+import api from '@/api';
 
 export default {
   name: "Profile",
@@ -53,6 +57,7 @@ export default {
     ProfileAvatar,
     Post,
     PostList,
+    FileInput
   },
   mounted() {
     this.dispatchProfile(this.$route.params.id);
@@ -63,6 +68,11 @@ export default {
   },
   methods: {
     ...mapActions(['dispatchProfile', 'dispatchProfilePosts']),
+    onBackgroundUpload(file) {
+      if (file) {
+        api.profile.uploadBackgroundPhoto(file);
+      }
+    }
   }
 }
 </script>

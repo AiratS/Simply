@@ -4,9 +4,11 @@
       <div class="profile-avatar-picture-frame">
         <img src="../../img/profile-avatar.png" alt="profile-avatar" />
       </div>
-      <b-button class="profile-avatar-change sy-btn">
-        <b-icon icon="camera-fill"></b-icon>
-      </b-button>
+      <file-input @upload="onAvatarUpload">
+        <b-button class="profile-avatar-change sy-btn">
+          <b-icon icon="camera-fill"></b-icon>
+        </b-button>
+      </file-input>
     </div>
     <div class="profile-avatar-friends">
       <p class="profile-avatar-friends-title">Friends</p>
@@ -18,14 +20,13 @@
 </template>
 
 <script>
-import {
-  BButton
-} from 'bootstrap-vue';
+import FileInput from "@/components/FileInput";
+import api from '@/api';
 
 export default {
   name: "ProfileAvatar",
   components: {
-    BButton,
+    FileInput,
   },
   props: {
     avatar: {
@@ -36,6 +37,13 @@ export default {
       type: Number,
       required: true,
     },
+  },
+  methods: {
+    onAvatarUpload(file) {
+      if (file) {
+        api.uploadAvatarPhoto(file);
+      }
+    }
   }
 }
 </script>

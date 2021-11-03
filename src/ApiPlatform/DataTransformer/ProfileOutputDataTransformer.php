@@ -10,13 +10,18 @@ use App\Entity\User;
 
 class ProfileOutputDataTransformer implements DataTransformerInterface
 {
+    /**
+     * @param object               $data
+     * @param array<string, mixed> $context
+     */
     public function supportsTransformation($data, string $to, array $context = []): bool
     {
         return $data instanceof User && ProfileOutputDto::class === $to;
     }
 
     /**
-     * @param User $object
+     * @param User                 $object
+     * @param array<string, mixed> $context
      */
     public function transform($object, string $to, array $context = []): ProfileOutputDto
     {
