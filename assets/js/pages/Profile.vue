@@ -25,12 +25,12 @@
               <p class="user-full-name">
                 {{ profile.fullName }}
               </p>
-              <p class="user-status">
-                {{ profile.status }}
+              <p class="user-about">
+                {{ profile.about }}
               </p>
             </div>
             <div class="profile-posts">
-              <post-list :posts="postList"></post-list>
+              <post-list :posts="profilePosts"></post-list>
             </div>
           </div>
         </div>
@@ -40,75 +40,36 @@
 </template>
 
 <script>
-import { BButton } from 'bootstrap-vue';
-import MainLayout from "../layouts/MainLayout";
-import ProfileAvatar from "../components/ProfileAvatar";
-import Post from "../components/Post";
-import PostList from "../components/PostList";
+import { mapState, mapActions } from 'vuex';
+import MainLayout from "@/layouts/MainLayout";
+import ProfileAvatar from "@/components/ProfileAvatar";
+import Post from "@/components/Post";
+import PostList from "@/components/PostList";
 
 export default {
   name: "Profile",
   components: {
-    BButton,
     MainLayout,
     ProfileAvatar,
     Post,
     PostList,
   },
-  data() {
-    return {
-      profile: {
-        fullName: 'John Doe',
-        status: 'Super cool person!',
-        background: '../../img/profile-background.jpg',
-        avatar: './ddd',
-        friendsCount: 20,
-      },
-      postList: [
-        {
-          author: 'John Doe',
-          time: '3 min ago',
-          content: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit." +
-              " Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque " +
-              "penatibus et magnis dis parturient montes, nascetur ridiculus mus." +
-              " Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem." +
-              " Nulla consequat massa quis enim. Donec pede justo, fringilla vel, " +
-              "aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet" +
-              " a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium." +
-              " Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean " +
-              "vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat " +
-              "vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, " +
-              "feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque " +
-              "rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper" +
-              " ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget " +
-              "condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed" +
-              " ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas " +
-              "nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus." +
-              " Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed " +
-              "fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat," +
-              " leo eget bibendum sodales, augue velit cursus nunc,"
-        },
-        {
-          author: 'John Doe',
-          time: '3 min ago',
-          content: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit." +
-              " Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque " +
-              "penatibus et magnis dis parturient montes, nascetur ridiculus mus." +
-              " Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem." +
-              " Nulla consequat massa quis enim. Donec pede justo, fringilla vel, " +
-              "aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet" +
-              " a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium." +
-              " Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean "
-        },
-      ]
-    }
+  mounted() {
+    this.dispatchProfile(this.$route.params.id);
+    this.dispatchProfilePosts(this.$route.params.id);
+  },
+  computed: {
+    ...mapState(['profile', 'profilePosts'])
+  },
+  methods: {
+    ...mapActions(['dispatchProfile', 'dispatchProfilePosts']),
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/variables';
-@import '../../scss/colors';
+@import '@scss/variables';
+@import '@scss/colors';
 
 .profile-bg {
   position: relative;
@@ -183,7 +144,7 @@ export default {
     color: black;
   }
 
-  .user-status {
+  .user-about {
     color: #686868;
     font-size: 18px;
     font-weight: 600;

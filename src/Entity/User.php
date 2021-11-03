@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use App\ApiPlatform\Dto\ProfileOutputDto;
 use App\ApiPlatform\Dto\SignUpInputDto;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
@@ -23,9 +24,15 @@ use Symfony\Component\Validator\Constraints as Assert;
  *             "denormalization_context"={
  *                 "groups"={"sign_up"}
  *             }
- *         }
+ *         },
  *     },
- *     itemOperations={"get"}
+ *     itemOperations={
+ *         "get"={
+ *             "path"="/profile/{id}",
+ *             "method"="GET",
+ *             "output"=ProfileOutputDto::class
+ *         }
+ *     }
  * )
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
