@@ -6,7 +6,6 @@ namespace App\ApiPlatform\Dto;
 
 use App\Validator\ApiPlatform\Dto\SignUpInputDtoEqualPasswords;
 use App\Validator\ApiPlatform\Dto\SignUpInputDtoUniqueEmail;
-use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -16,7 +15,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 class SignUpInputDto
 {
     /**
-     * @Groups({"sign_up"})
      * @Assert\Sequentially({
      *     @Assert\NotBlank(),
      *     @Assert\Email(),
@@ -26,19 +24,16 @@ class SignUpInputDto
     private string $email;
 
     /**
-     * @Groups({"sign_up"})
      * @Assert\NotBlank()
      */
     private string $fullName;
 
     /**
-     * @Groups({"sign_up"})
      * @Assert\NotBlank()
      */
     private string $password;
 
     /**
-     * @Groups({"sign_up"})
      * @Assert\NotBlank()
      */
     public string $repeatPassword;
