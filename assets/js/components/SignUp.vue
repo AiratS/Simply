@@ -3,64 +3,54 @@
     <b-form>
       <p class="title">Sign up</p>
       <b-form-group>
-        <b-form-input
-            v-model="fullName"
-            :state="!$v.fullName.$invalid"
-            class="sy-input"
-            placeholder="Full name"
-            required>
-        </b-form-input>
-        <b-form-invalid-feedback :state="!$v.fullName.$invalid">
-            The field value is required
-        </b-form-invalid-feedback>
+        <unified-error-wrapper :errors="errors.fullName">
+          <b-form-input
+              v-model="fullName"
+              :state="!errors.fullName.$invalid"
+              @input="clearServerError('fullName')"
+              class="sy-input"
+              placeholder="Full name"
+              required>
+          </b-form-input>
+        </unified-error-wrapper>
       </b-form-group>
       <b-form-group>
-        <b-form-input
-            v-model="email"
-            :state="!$v.email.$invalid"
-            class="sy-input"
-            placeholder="Email"
-            required>
-        </b-form-input>
-        <b-form-invalid-feedback :state="!$v.email.$invalid">
-          <span v-if="!$v.email.required">
-            The field value is required
-          </span>
-          <span v-else-if="!$v.email.email">
-            The field value must an email
-          </span>
-        </b-form-invalid-feedback>
+        <unified-error-wrapper :errors="errors.email">
+          <b-form-input
+              v-model="email"
+              :state="!errors.email.$invalid"
+              @input="clearServerError('email')"
+              class="sy-input"
+              placeholder="Email"
+              required>
+          </b-form-input>
+        </unified-error-wrapper>
       </b-form-group>
       <b-form-group>
-        <b-form-input
-            v-model="password"
-            :state="!$v.password.$invalid"
-            class="sy-input"
-            type="password"
-            placeholder="Password"
-            required>
-        </b-form-input>
-        <b-form-invalid-feedback :state="!$v.password.$invalid">
-          <span v-if="!$v.password.required">
-            The field value is required
-          </span>
-          <span v-else-if="!$v.password.minLength">
-            The field length must min 8
-          </span>
-        </b-form-invalid-feedback>
+        <unified-error-wrapper :errors="errors.password">
+          <b-form-input
+              v-model="password"
+              :state="!errors.password.$invalid"
+              @input="clearServerError('password')"
+              class="sy-input"
+              type="password"
+              placeholder="Password"
+              required>
+          </b-form-input>
+        </unified-error-wrapper>
       </b-form-group>
       <b-form-group>
-        <b-form-input
-            v-model="repeatPassword"
-            :state="!$v.repeatPassword.$invalid"
-            class="sy-input"
-            type="password"
-            placeholder="Repeat password"
-            required>
-        </b-form-input>
-        <b-form-invalid-feedback :state="!$v.repeatPassword.$invalid">
-          The field must be same
-        </b-form-invalid-feedback>
+        <unified-error-wrapper :errors="errors.repeatPassword">
+          <b-form-input
+              v-model="repeatPassword"
+              :state="!errors.repeatPassword.$invalid"
+              @input="clearServerError('repeatPassword')"
+              class="sy-input"
+              type="password"
+              placeholder="Repeat password"
+              required>
+          </b-form-input>
+        </unified-error-wrapper>
       </b-form-group>
       <b-form-group class="agree-checkbox">
         <b-form-checkbox
@@ -69,7 +59,7 @@
           Yes, I understand and agree to the workwise Terms & Conditions.
         </b-form-checkbox>
       </b-form-group>
-      <b-button @click="onSignUp" :disabled="$v.$invalid" class="sy-btn btn-sign-up" variant="primary">
+      <b-button @click="onSignUp" :disabled="errors.$invalid" class="sy-btn btn-sign-up" variant="primary">
         Get started
       </b-button>
     </b-form>
@@ -77,30 +67,20 @@
 </template>
 
 <script>
-import {
-  BForm,
-  BFormGroup,
-  BFormInput,
-  BFormCheckbox,
-  BFormInvalidFeedback,
-  BButton
-} from 'bootstrap-vue';
 import { required, email, minLength, sameAs } from 'vuelidate/lib/validators'
-import api from '../api';
-import helpers from '../helpers';
+import UnifiedErrorMixin from '@/mixins/UnifiedErrorMixin';
+import UnifiedErrorWrapper from '@/components/UnifiedErrorWrapper';
+import api from '@/api';
+import helpers from '@/helpers';
 
 export default {
   name: "SignUp",
-
+  mixins: [
+    UnifiedErrorMixin,
+  ],
   components: {
-    BForm,
-    BFormGroup,
-    BFormInput,
-    BFormCheckbox,
-    BFormInvalidFeedback,
-    BButton,
+    UnifiedErrorWrapper,
   },
-
   data() {
     return {
       fullName: null,
@@ -110,7 +90,6 @@ export default {
       isAgree: false,
     }
   },
-
   validations: {
     fullName: {
       required,
@@ -131,7 +110,6 @@ export default {
       isTrue: value => true === value,
     }
   },
-
   methods: {
     onSignUp() {
       helpers.decorateVuelidateError(api.auth.signUp(this.$data), {
@@ -139,7 +117,7 @@ export default {
           // TODO: go to profile
         },
         onError: (serverErrors) => {
-          // TODO: combine with client errors
+          this.serverErrors = serverErrors;
         }
       });
     }
@@ -148,7 +126,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/colors';
+@import '@scss/colors';
 
 .sign-up {
   .title {
