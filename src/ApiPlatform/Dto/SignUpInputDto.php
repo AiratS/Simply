@@ -48,9 +48,11 @@ class SignUpInputDto
         return $this->email;
     }
 
-    public function setEmail(string $email): void
+    public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
     }
 
     public function getFullName(): string
@@ -58,9 +60,11 @@ class SignUpInputDto
         return $this->fullName;
     }
 
-    public function setFullName(string $fullName): void
+    public function setFullName(string $fullName): self
     {
         $this->fullName = $fullName;
+
+        return $this;
     }
 
     public function getPassword(): string
@@ -68,9 +72,11 @@ class SignUpInputDto
         return $this->password;
     }
 
-    public function setPassword(string $password): void
+    public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
     }
 
     public function getRepeatPassword(): string
@@ -78,8 +84,10 @@ class SignUpInputDto
         return $this->repeatPassword;
     }
 
-    public function setRepeatPassword(string $repeatPassword): void
+    public function setRepeatPassword(string $repeatPassword): self
     {
         $this->repeatPassword = $repeatPassword;
+
+        return $this;
     }
 }
