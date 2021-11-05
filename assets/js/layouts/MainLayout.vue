@@ -6,7 +6,7 @@
           <simply-logo class="logo"></simply-logo>
           <search-field class="search"></search-field>
         </div>
-        <div class="header-menu">
+        <div v-if="profile.id" class="header-menu">
           <top-menu class="top-menu" :items="items"></top-menu>
           <drop-menu
               :profile="profile"
@@ -44,6 +44,7 @@ import SimplyLogo from "@/components/SimplyLogo";
 import SearchField from "@/components/SearchField";
 import TopMenu from "@/components/TopMenu";
 import DropMenu from "@/components/DropMenu";
+import {mapActions, mapState} from "vuex";
 
 export default {
   name: "MainLayout",
@@ -55,11 +56,17 @@ export default {
   },
   data() {
     return {
+      logoutLink: '/logout',
       items: [
+        {
+          name: 'Home',
+          icon: 'house-door-fill',
+          linkTo: '/profile',
+        },
         {
           name: 'Messages',
           icon: 'envelope-fill',
-          linkTo: '/login'
+          linkTo: '/messages'
         },
         {
           name: 'Settings',
@@ -69,13 +76,9 @@ export default {
         {
           name: 'FAQ',
           icon: 'arrow-up',
-          linkTo: '/login'
+          linkTo: '#'
         },
       ],
-      profile: {
-        fullName: 'Airat'
-      },
-      logoutLink: '/login',
       settingItems: [
         {
           name: 'Account',
@@ -83,11 +86,11 @@ export default {
         },
         {
           name: 'Privacy',
-          linkTo: '/login',
+          linkTo: '#',
         },
         {
           name: 'Terms & Conditions',
-          linkTo: '/login',
+          linkTo: '#',
         }
       ],
       footerLinks: [
@@ -126,10 +129,19 @@ export default {
       ]
     };
   },
+  mounted() {
+    if (!this.profile.id) {
+      this.dispatchProfile();
+    }
+  },
   computed: {
+    ...mapState(['profile']),
     currentYear() {
       return new Date().getFullYear();
     }
+  },
+  methods: {
+    ...mapActions(['dispatchProfile']),
   }
 }
 </script>

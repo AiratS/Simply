@@ -59,11 +59,6 @@ export default {
     PostList,
     FileInput
   },
-  mounted() {
-    this.dispatchProfile(this.$route.params.id).then(profile => {
-      this.dispatchProfilePosts(profile.id);
-    });
-  },
   computed: {
     ...mapState(['profile', 'profilePosts'])
   },
