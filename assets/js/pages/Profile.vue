@@ -60,8 +60,9 @@ export default {
     FileInput
   },
   mounted() {
-    this.dispatchProfile(this.$route.params.id);
-    this.dispatchProfilePosts(this.$route.params.id);
+    this.dispatchProfile(this.$route.params.id).then(profile => {
+      this.dispatchProfilePosts(profile.id);
+    });
   },
   computed: {
     ...mapState(['profile', 'profilePosts'])

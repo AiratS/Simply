@@ -114,7 +114,7 @@ export default {
     onSignUp() {
       helpers.decorateVuelidateError(api.auth.signUp(this.$data), {
         onSuccess: () => {
-          // TODO: go to profile
+          this.$router.push({ name: 'profile' });
         },
         onError: (serverErrors) => {
           this.serverErrors = serverErrors;
