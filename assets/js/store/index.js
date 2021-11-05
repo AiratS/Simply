@@ -28,8 +28,11 @@ export default new Vuex.Store({
 
   actions: {
     dispatchProfile({ commit }, userId) {
-      api.profile.getProfile(userId).then((response) => {
-        commit(PROFILE, response.data);
+      return new Promise((resolve, reject) => {
+        api.profile.getProfile(userId).then((response) => {
+          commit(PROFILE, response.data);
+          resolve(response.data);
+        });
       });
     },
     dispatchProfilePosts({ commit }, userId) {

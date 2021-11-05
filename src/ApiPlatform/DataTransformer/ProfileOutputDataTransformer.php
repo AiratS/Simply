@@ -26,6 +26,7 @@ class ProfileOutputDataTransformer implements DataTransformerInterface
     public function transform($object, string $to, array $context = []): ProfileOutputDto
     {
         return (new ProfileOutputDto())
+            ->setId($object->getId())
             ->setFullName($object->getFullName())
             ->setAbout($object->getAbout())
             ->setBackground('')

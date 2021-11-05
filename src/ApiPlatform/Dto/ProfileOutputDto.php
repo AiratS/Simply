@@ -6,6 +6,8 @@ namespace App\ApiPlatform\Dto;
 
 class ProfileOutputDto
 {
+    private int $id;
+
     private string $fullName;
 
     private ?string $about;
@@ -15,6 +17,18 @@ class ProfileOutputDto
     private string $avatar;
 
     private int $friendsCount = 2;
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
 
     public function getFullName(): string
     {

@@ -16,24 +16,29 @@ export default {
       .finally(onFinally);
   },
   toVuelidateErrors(violations) {
-    let vuelidateErrors = [];
+    let vuelidateErrors = {};
     violations.forEach(violation => {
       let field = violation.propertyPath;
       if (!vuelidateErrors.hasOwnProperty(field)) {
         vuelidateErrors[field] = {
           $invalid: true,
-          server: true,
-          serverError: violation.message,
-          serverErrorsList: [
-            violation.message
-          ]
+          server: {
+            message: violation.message,
+            messageList: [
+              violation.message,
+            ]
+          },
         };
       } else {
         vuelidateErrors[field]
-          .serverErrorsList
+          .server
+          .messageList
           .push(violation.message);
       }
     });
+
+    vuelidateErrors.count = Object.keys(vuelidateErrors).length;
+    vuelidateErrors.$invalid = true;
 
     return vuelidateErrors;
   },

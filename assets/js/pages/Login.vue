@@ -13,7 +13,7 @@
           </div>
         </div>
         <div class="background">
-          <img src="../../img/login-background.png" alt="login-background" />
+          <img src="@img/login-background.png" alt="login-background" />
         </div>
       </div>
       <div class="col col-6 right">
@@ -35,15 +35,12 @@
 </template>
 
 <script>
-import { BTabs, BTab } from 'bootstrap-vue';
-import SignIn from "../components/SignIn";
-import SignUp from "../components/SignUp";
+import SignIn from "@/components/SignIn";
+import SignUp from "@/components/SignUp";
 
 export default {
   name: "Login",
   components: {
-    BTabs,
-    BTab,
     SignIn,
     SignUp,
   }
@@ -51,7 +48,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../scss/colors';
+@import '@scss/colors';
 
 body {
   background-color: $sy-login-red;

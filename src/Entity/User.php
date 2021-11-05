@@ -22,15 +22,13 @@ use Symfony\Component\Validator\Constraints as Assert;
  *         "sign_up"={
  *             "path"="/sign-up",
  *             "method"="POST",
- *             "input"=SignUpInputDto::class,
- *             "denormalization_context"={
- *                 "groups"={"sign_up"}
- *             }
- *         },
+ *             "input"=SignUpInputDto::class
+ *         }
  *     },
  *     itemOperations={
  *         "get"={
  *             "path"="/profile/{id}",
+ *             "defaults"={"id"=-1},
  *             "method"="GET",
  *             "output"=ProfileOutputDto::class
  *         }

@@ -3,7 +3,7 @@ const PHOTO_BACKGROUND = 'background';
 
 export default axios => ({
   getProfile(userId) {
-    return axios.get('/api/profile/' + userId);
+    return axios.get('/api/profile/' + (userId || ''));
   },
   getProfilePosts(userId) {
     return new Promise((resolve, reject) => {
