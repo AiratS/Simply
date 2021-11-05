@@ -2,8 +2,8 @@
   <div class="top-menu">
     <div class="top-menu-items">
       <div v-for="(item, index) in items" :key="index" class="top-menu-item col">
-        <b-icon class="top-menu-item-icon" :icon="item.icon"></b-icon>
         <router-link class="top-menu-item-link sy-link" :to="item.linkTo">
+          <b-icon class="top-menu-item-icon" :icon="item.icon"></b-icon>
           {{ item.name }}
         </router-link>
       </div>

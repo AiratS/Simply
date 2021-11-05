@@ -44,7 +44,7 @@ import SimplyLogo from "@/components/SimplyLogo";
 import SearchField from "@/components/SearchField";
 import TopMenu from "@/components/TopMenu";
 import DropMenu from "@/components/DropMenu";
-import {mapActions, mapState} from "vuex";
+import { mapActions, mapState } from "vuex";
 
 export default {
   name: "MainLayout",
@@ -136,6 +136,7 @@ export default {
   },
   computed: {
     ...mapState(['profile']),
+
     currentYear() {
       return new Date().getFullYear();
     }

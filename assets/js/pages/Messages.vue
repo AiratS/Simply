@@ -15,9 +15,9 @@
 </template>
 
 <script>
-import MainLayout from "../layouts/MainLayout";
-import MessageList from '../components/MessageList';
-import ChatView from '../components/ChatView';
+import MainLayout from "@/layouts/MainLayout";
+import MessageList from '@/components/MessageList';
+import ChatView from '@/components/ChatView';
 
 export default {
   name: "Messages",
@@ -84,7 +84,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/variables';
+@import '@scss/variables';
 
 .messages {
   width: $sy-page-width;

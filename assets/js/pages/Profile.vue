@@ -2,7 +2,9 @@
   <main-layout>
     <div class="profile">
       <div class="profile-bg">
-        <img src="../../img/profile-background.jpg" alt="profile-background" />
+        <div class="profile-bg-cut">
+          <img src="../../img/profile-background.jpg" alt="profile-background" />
+        </div>
         <div class="profile-bg-change-container">
           <div class="profile-bg-change">
             <file-input @upload="onBackgroundUpload">
@@ -62,8 +64,12 @@ export default {
   computed: {
     ...mapState(['profile', 'profilePosts'])
   },
+  mounted() {
+    this.dispatchProfilePosts(null);
+  },
   methods: {
     ...mapActions(['dispatchProfile', 'dispatchProfilePosts']),
+
     onBackgroundUpload(file) {
       if (file) {
         api.profile.uploadBackgroundPhoto(file);
@@ -81,6 +87,12 @@ export default {
   position: relative;
   width: 100%;
   overflow: hidden;
+
+  .profile-bg-cut {
+    width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .profile-bg-change-container {
