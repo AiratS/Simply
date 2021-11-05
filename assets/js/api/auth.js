@@ -10,8 +10,8 @@ export default axios => ({
 
   signIn(email, password) {
     return axios.post('/api/login-check', {
-      email,
-      password
+      username: email,
+      password: password,
     });
   }
 });
