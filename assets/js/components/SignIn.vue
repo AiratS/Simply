@@ -3,54 +3,99 @@
     <b-form>
       <p class="title">Sign in</p>
       <b-form-group>
-        <b-form-input
-          class="sy-input"
-          placeholder="Username"
-          required>
-        </b-form-input>
-        <b-form-invalid-feedback :state="false">
-          Your user ID must be 5-12 characters long.
-        </b-form-invalid-feedback>
+        <unified-error-wrapper :errors="errors.email">
+          <b-form-input
+              v-model="email"
+              :state="!errors.email.$invalid"
+              @input="clearServerError('email')"
+              class="sy-input"
+              placeholder="Email"
+              required>
+          </b-form-input>
+        </unified-error-wrapper>
       </b-form-group>
       <b-form-group>
-        <b-form-input
-            class="sy-input"
-            type="password"
-            placeholder="Password"
-            required>
-        </b-form-input>
-        <b-form-invalid-feedback :state="true">
-          Your user ID must be 5-12 characters long.
-        </b-form-invalid-feedback>
+        <unified-error-wrapper :errors="errors.password">
+          <b-form-input
+              v-model="password"
+              :state="!errors.password.$invalid"
+              @input="clearServerError('password')"
+              class="sy-input"
+              type="password"
+              placeholder="Password"
+              required>
+          </b-form-input>
+        </unified-error-wrapper>
       </b-form-group>
-      <b-button class="sy-btn btn-sign-in" variant="primary">Sign in</b-button>
+      <b-form-invalid-feedback :state="!authError">
+        {{ authError }}
+      </b-form-invalid-feedback>
+      <b-button @click="onSignIn" :disabled="errors.$invalid" class="sy-btn btn-sign-in" variant="primary">
+        Sign in
+      </b-button>
     </b-form>
   </div>
 </template>
 
 <script>
-import {
-  BForm,
-  BFormGroup,
-  BFormInput,
-  BFormInvalidFeedback,
-  BButton
-} from 'bootstrap-vue';
+import { required, email } from 'vuelidate/lib/validators'
+import UnifiedErrorMixin from '@/mixins/UnifiedErrorMixin';
+import UnifiedErrorWrapper from '@/components/UnifiedErrorWrapper';
+import api from '@/api';
+import helpers from '@/helpers';
 
 export default {
   name: "SignIn",
+  mixins: [
+    UnifiedErrorMixin,
+  ],
   components: {
-    BForm,
-    BFormGroup,
-    BFormInput,
-    BFormInvalidFeedback,
-    BButton,
+    UnifiedErrorWrapper,
+  },
+  data() {
+    return {
+      email: null,
+      password: null,
+      authError: null,
+    };
+  },
+  validations: {
+    email: {
+      required,
+      email,
+    },
+    password: {
+      required,
+    },
+  },
+  methods: {
+    onSignIn() {
+      this.authError = null;
+      helpers.decorateVuelidateError(api.auth.signIn(this.email, this.password), {
+        onSuccess: () => {
+          this.$router.push({ name: 'profile' });
+        },
+        onError: (serverErrors) => {
+          if (serverErrors.hasOwnProperty('symfonyValidator')) {
+            this.serverErrors = serverErrors;
+            return;
+          }
+
+          this.authError = 'Incorrect login or password';
+          this.resetFields();
+        }
+      });
+    },
+    resetFields() {
+      this.email = null;
+      this.password = null;
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/colors';
+@import '@scss/colors';
 
 .sign-in {
   .title {

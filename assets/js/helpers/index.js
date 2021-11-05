@@ -9,7 +9,7 @@ export default {
         let response = error.response;
         let vuelidateErrors = response.hasOwnProperty('data') && response.data.hasOwnProperty('violations')
           ? this.toVuelidateErrors(response.data.violations)
-          : null;
+          : response;
 
         onError(vuelidateErrors, error);
       })
@@ -39,6 +39,7 @@ export default {
 
     vuelidateErrors.count = Object.keys(vuelidateErrors).length;
     vuelidateErrors.$invalid = true;
+    vuelidateErrors.symfonyValidator = true;
 
     return vuelidateErrors;
   },
