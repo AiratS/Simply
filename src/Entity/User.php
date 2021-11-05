@@ -23,11 +23,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  *             "path"="/sign-up",
  *             "method"="POST",
  *             "input"=SignUpInputDto::class
- *         },
+ *         }
  *     },
  *     itemOperations={
  *         "get"={
  *             "path"="/profile/{id}",
+ *             "defaults"={"id"=-1},
  *             "method"="GET",
  *             "output"=ProfileOutputDto::class
  *         }
