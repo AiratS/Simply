@@ -56,7 +56,7 @@ export default {
   },
   data() {
     return {
-      logoutLink: '/logout',
+      logoutLink: '#',
       items: [
         {
           name: 'Home',
@@ -71,7 +71,7 @@ export default {
         {
           name: 'Settings',
           icon: 'envelope',
-          linkTo: '/login'
+          linkTo: '#'
         },
         {
           name: 'FAQ',
@@ -82,7 +82,7 @@ export default {
       settingItems: [
         {
           name: 'Account',
-          linkTo: '/login',
+          linkTo: '#',
         },
         {
           name: 'Privacy',
@@ -148,9 +148,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@scss/variables';
 @import '@scss/colors';
-
-$page-width: 1110px;
 
 .header {
   width: 100%;
@@ -158,7 +157,7 @@ $page-width: 1110px;
   background-color: $sy-red;
 
   .header-content {
-    width: $page-width;
+    width: $sy-page-width;
     margin-left: auto;
     margin-right: auto;
 
@@ -187,7 +186,7 @@ $page-width: 1110px;
   .footer-content {
     display: flex;
     justify-content: space-between;
-    width: $page-width;
+    width: $sy-page-width;
     margin-left: auto;
     margin-right: auto;
 
@@ -223,5 +222,12 @@ $page-width: 1110px;
 
 .logo {
   margin-right: 15px;
+}
+</style>
+
+<style lang="scss">
+body {
+  background-color: white !important;
+  padding: 0 !important;
 }
 </style>

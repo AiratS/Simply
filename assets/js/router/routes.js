@@ -1,4 +1,3 @@
-const Home = () => import('@/pages/Home');
 const Login = () => import('@/pages/Login');
 const Profile = () => import('@/pages/Profile');
 const Search = () => import('@/pages/Search');
@@ -8,7 +7,7 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: Home,
+    component: Login,
   },
   {
     path: '/login',

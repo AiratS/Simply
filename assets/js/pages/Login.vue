@@ -57,7 +57,7 @@ body {
 
   .login {
     width: 940px;
-    height: 615px;
+    height: 650px;
     margin-left: auto;
     margin-right: auto;
     background-color: white;
@@ -65,7 +65,7 @@ body {
 
     .left {
       position: relative;
-      height: 615px;
+      height: 650px;
       padding-top: 70px;
       padding-left: 20px;
       border-right: 1px solid $sy-login-grey;
