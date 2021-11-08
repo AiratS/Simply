@@ -45,6 +45,7 @@ class ProfileOutputDataTransformerTest extends TestCase
     {
         $transformed = $this->profileOutputDataTransformer->transform($data, $to, $context);
 
+        $this->assertEquals($expected->getId(), $transformed->getId());
         $this->assertEquals($expected->getFullName(), $transformed->getFullName());
         $this->assertEquals($expected->getAbout(), $transformed->getAbout());
     }

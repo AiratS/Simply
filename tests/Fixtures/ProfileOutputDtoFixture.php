@@ -11,6 +11,7 @@ class ProfileOutputDtoFixture
     public static function get(): ProfileOutputDto
     {
         return (new ProfileOutputDto())
+            ->setId(1)
             ->setFullName('John Doe')
             ->setAbout('Super cool person!')
             ->setBackground('')
