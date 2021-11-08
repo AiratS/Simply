@@ -7,9 +7,7 @@
             Simply
           </div>
           <div class="desc">
-            Simply, is a global freelancing platform and
-            social networking where businesses and independent
-            professionals connect and collaborate remotely
+            Simply, is just simple social network
           </div>
         </div>
         <div class="background">
