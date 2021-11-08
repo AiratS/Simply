@@ -4,7 +4,8 @@
 /.env.local.php
 /.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
-/public/bundles/
+/public/*
+!/public/index.php
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
@@ -34,3 +35,12 @@ yarn-error.log
 /.php-cs-fixer.php
 /.php-cs-fixer.cache
 ###< friendsofphp/php-cs-fixer ###
+
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###
+
+###> docker ###
+/docker/.env
+/docker/docker-composer.override.yml
+###< docker ###

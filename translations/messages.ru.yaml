@@ -1,0 +1,4 @@
+controller:
+    api:
+        upload_user_photo_controller:
+            invalid_file_key_specified: 'Указано неверное поле для файла.'

@@ -11,7 +11,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class AppController extends AbstractController
 {
     /**
-     * @Route("/{publicPath}", name="public_path", defaults={"publicPath": null})
+     * @Route(
+     *     "/{publicPath}",
+     *     requirements={"publicPath"="^(?!admin|api).+"},
+     *     defaults={"publicPath": null},
+     *     name="public_path"
+     * )
      */
     public function index(): Response
     {
