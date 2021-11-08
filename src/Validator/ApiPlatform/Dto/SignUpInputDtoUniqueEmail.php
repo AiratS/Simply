@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraint;
  */
 class SignUpInputDtoUniqueEmail extends Constraint
 {
-    public string $message = 'The email has to by unique';
+    public string $message = 'validator.api_platform.dto.sign_up_input_dto_unique_email.message';
 
     public function getTargets(): string
     {

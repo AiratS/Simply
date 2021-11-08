@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraint;
  */
 class SignUpInputDtoEqualPasswords extends Constraint
 {
-    public string $message = 'The repeat password must be same';
+    public string $message = 'validator.api_platform.dto.sign_up_input_dto_equal_passwords.message';
 
     public function getTargets(): string
     {

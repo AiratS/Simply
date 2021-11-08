@@ -19,11 +19,12 @@ export default {
     }
   },
   data() {
+    // TODO: Move to a separate file, and generate values from Symfony validator translations
     return {
-      required: 'The field value is required',
+      required: 'This value should not be blank.',
       email: 'The field value must be an email',
-      minLength: 'minLength',
-      sameAs: 'sameAs',
+      minLength: 'The password must have at least 8 characters',
+      sameAs: 'Passwords must be the same',
     }
   },
   computed: {

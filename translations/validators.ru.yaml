@@ -1,0 +1,7 @@
+validator:
+    api_platform:
+        dto:
+            sign_up_input_dto_equal_passwords:
+                message: 'Пароли должны быть одинаковыми'
+            sign_up_input_dto_unique_email:
+                message: 'Почта должна быть уникальной'

@@ -11,14 +11,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Attribute\AsController;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[AsController]
 class UploadUserPhotoController extends AbstractController
 {
     private const PHOTO_FIELD_KEY = 'photo';
 
-    public function __construct(private UserRepository $userRepository)
-    {
+    public function __construct(
+        private TranslatorInterface $translator,
+        private UserRepository $userRepository,
+    ) {
     }
 
     /**
@@ -28,7 +31,9 @@ class UploadUserPhotoController extends AbstractController
     {
         $file = $request->files->get(self::PHOTO_FIELD_KEY);
         if (null === $file) {
-            throw new BadRequestHttpException('Incorrect file type');
+            $msg = $this->translator
+                ->trans('controller.api.upload_user_photo_controller.invalid_file_key_specified');
+            throw new BadRequestHttpException($msg);
         }
 
         /** @var User $user */
