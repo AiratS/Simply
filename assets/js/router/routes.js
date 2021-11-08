@@ -1,8 +1,8 @@
-const Home = () => import('../pages/Home');
-const Login = () => import('../pages/Login');
-const Profile = () => import('../pages/Profile');
-const Search = () => import('../pages/Search');
-const Messages = () => import('../pages/Messages');
+const Home = () => import('@/pages/Home');
+const Login = () => import('@/pages/Login');
+const Profile = () => import('@/pages/Profile');
+const Search = () => import('@/pages/Search');
+const Messages = () => import('@/pages/Messages');
 
 const routes = [
   {

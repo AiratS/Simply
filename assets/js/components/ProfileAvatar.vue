@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import FileInput from "@/components/FileInput";
+import FileInput from '@/components/FileInput';
 import api from '@/api';
 
 export default {
@@ -49,7 +49,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/colors';
+@import '@scss/colors';
 
 .profile-avatar {
   .profile-avatar-friends {

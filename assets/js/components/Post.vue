@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import PostControl from "../components/PostControl";
+import PostControl from '@/components/PostControl';
 
 export default {
   name: "Post",
@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/colors';
+@import '@scss/colors';
 
 .post {
   width: 100%;

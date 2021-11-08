@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import MainLayout from "../layouts/MainLayout";
-import SearchProfileList from "../components/SearchProfileList";
+import MainLayout from '@/layouts/MainLayout';
+import SearchProfileList from '@/components/SearchProfileList';
 
 export default {
   name: "Search",
@@ -57,8 +57,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/variables';
-@import '../../scss/colors';
+@import '@scss/variables';
+@import '@scss/colors';
 
 .search {
   width: $sy-page-width;

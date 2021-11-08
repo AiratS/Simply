@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import Message from '../components/Message';
+import Message from '@/components/Message';
 
 export default {
   name: "MessageList",

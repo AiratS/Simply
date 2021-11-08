@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { PROFILE, PROFILE_POSTS } from "./mutation-types";
-import api from '../api';
+import { PROFILE, PROFILE_POSTS } from './mutation-types';
+import api from '@/api';
 
 Vue.use(Vuex);
 

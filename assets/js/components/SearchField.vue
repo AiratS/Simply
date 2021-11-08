@@ -13,28 +13,13 @@
 </template>
 
 <script>
-import {
-  BFormGroup,
-  BFormInput,
-  BButton,
-  BIcon,
-  BIconSearch,
-} from 'bootstrap-vue';
-
 export default {
-  name: "SearchField",
-  components: {
-    BFormGroup,
-    BFormInput,
-    BButton,
-    BIcon,
-    BIconSearch,
-  }
+  name: "SearchField"
 }
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/colors';
+@import '@scss/colors';
 
 .search-field {
   position: relative;

@@ -40,11 +40,11 @@
 </template>
 
 <script>
-import SimplyLogo from "@/components/SimplyLogo";
-import SearchField from "@/components/SearchField";
-import TopMenu from "@/components/TopMenu";
-import DropMenu from "@/components/DropMenu";
-import { mapActions, mapState } from "vuex";
+import SimplyLogo from '@/components/SimplyLogo';
+import SearchField from '@/components/SearchField';
+import TopMenu from '@/components/TopMenu';
+import DropMenu from '@/components/DropMenu';
+import { mapActions, mapState } from 'vuex';
 
 export default {
   name: "MainLayout",

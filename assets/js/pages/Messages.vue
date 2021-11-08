@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import MainLayout from "@/layouts/MainLayout";
+import MainLayout from '@/layouts/MainLayout';
 import MessageList from '@/components/MessageList';
 import ChatView from '@/components/ChatView';
 

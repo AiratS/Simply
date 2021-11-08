@@ -35,8 +35,8 @@
 </template>
 
 <script>
-import SignIn from "@/components/SignIn";
-import SignUp from "@/components/SignUp";
+import SignIn from '@/components/SignIn';
+import SignUp from '@/components/SignUp';
 
 export default {
   name: "Login",

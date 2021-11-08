@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import SearchProfile from "../components/SearchProfile";
+import SearchProfile from '@/components/SearchProfile';
 
 export default {
   name: "SearchProfileList",
